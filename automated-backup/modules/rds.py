@@ -26,7 +26,7 @@ class RDSInstance:
             else:
                 date = datetime.datetime.utcnow().strftime('%Y-%m-%d')
                 tag_response = self.client.create_tags(
-                    Resources=[str(self.instance_id)],
+                    Resources=[str(self.db_id)],
                     Tags=[
                         {
                             'Key': 'BackupDate',

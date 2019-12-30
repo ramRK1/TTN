@@ -1,4 +1,4 @@
-#Maintainer Bhagvatula Nipun
+#Maintainer Bhagvatula Nipun && Ram Kamra
 from modules.ebs import EBS
 from modules.ec2 import EC2
 from modules.rds import RDS

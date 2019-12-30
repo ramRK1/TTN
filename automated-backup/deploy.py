@@ -1,4 +1,4 @@
-#Maintainer Bhagvatula Nipun
+#Maintainer Bhagvatula Nipun && Ram Kamra
 import subprocess
 import json
 import boto3

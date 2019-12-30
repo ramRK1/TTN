@@ -1,4 +1,4 @@
-#Maintainer Bhagvatula Nipun
+#Maintainer Bhagvatula Nipun && Ram Kamra
 from .client import Client
 import datetime
 

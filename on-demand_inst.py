@@ -29,8 +29,9 @@ for j in response_iterator:
                 # m.append(inst['InstanceType'])
 
 a = {k: v for k, v in sorted(a.items(), key=lambda item: item[1][0])}
-print(type(a))
-print(a)
+# print(type(a))
+# print(a)
+print(len(a.keys()))
 file = open('on-demand_inst.csv','w')
 for i in a:
     avg_12hr = ''

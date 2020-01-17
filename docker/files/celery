@@ -1,0 +1,10 @@
+FROM celery:3.1
+
+WORKDIR /HAWK
+
+COPY ./files/celery.sh celery.sh
+
+ENV CELERY_BROKER_URL=redis://redis
+
+ENTRYPOINT [ "/bin/sh" ]    
+CMD [ "./celery.sh" ]

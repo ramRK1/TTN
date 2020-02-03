@@ -14,8 +14,6 @@ pipeline {
                     echo $user
                     echo $pass
                 """
-                } 
-                
             }
         }
     }

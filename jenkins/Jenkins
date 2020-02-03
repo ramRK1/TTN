@@ -4,21 +4,18 @@ pipeline {
     
     stages{
         stage("git pull"){
-            steps{
-                script{
-                    git branch: "master", changelog: false, url: "https://github.com/ramRK1/TTN.git"
-                }   
-            }
+            
         }
         stage("run shell file"){
             steps{
-                script{
-                    sh """
-                        #!/bin/bash
-                        cd jenkins/
-                        ./*.sh {var1} {var2}
-                    """
-                }
+                withCredentials([usernamePassword(credentialsId: 'mol-dev', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                // some block
+                sh """
+                    echo $user
+                    echo $pass
+                """
+                } 
+                
             }
         }
     }

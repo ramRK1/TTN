@@ -1,4 +1,6 @@
 #!/bin/bash
+export $user
+export $pass
 
-echo $1
-echo $2
+echo $user
+echo $pass

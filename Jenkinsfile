@@ -8,8 +8,9 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'mol-dev', passwordVariable: 'pass', usernameVariable: 'user')]) {
                 // some block
                 sh """
-                    echo $user
-                    echo $pass
+                    #!/bin/bash
+                    cd jenkins
+                    ./*.sh
                 """
                 }
             }

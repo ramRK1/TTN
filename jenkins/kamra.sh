@@ -1,5 +1,5 @@
 #!/bin/bash
+export $user
+export $pass
 
-echo "the sum of two numbers are"
-sum=$(($1 + $2))
-echo $sum
+echo $pass

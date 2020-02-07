@@ -3,9 +3,6 @@ pipeline {
     agent any
     
     stages{
-        stage("git pull"){
-            
-        }
         stage("run shell file"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'mol-dev', passwordVariable: 'pass', usernameVariable: 'user')]) {

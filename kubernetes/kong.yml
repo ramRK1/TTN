@@ -1,0 +1,71 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kong
+  labels:
+    app: kong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kong
+  template:
+    metadata:
+      labels:
+        app: kong
+    spec:
+      containers:
+      - name: kong
+        image: kong:1.5
+        env:
+        - name: KONG_ADMIN_LISTEN
+          value: "0.0.0.0:8001, 0.0.0.0:8444 ssl"
+        - name: KONG_PG_USER
+          value: kong
+        - name: KONG_PG_PASSWORD
+          value: kong
+        - name: KONG_PG_HOST
+          value: postgres
+        - name: KONG_PROXY_ACCESS_LOG
+          value: "/dev/stdout"
+        - name: KONG_ADMIN_ACCESS_LOG
+          value: "/dev/stdout"
+        - name: KONG_PROXY_ERROR_LOG
+          value: "/dev/stderr"
+        - name: KONG_ADMIN_ERROR_LOG
+          value: "/dev/stderr"
+        ports:
+        - containerPort: 8001
+          name: admin
+          protocol: TCP
+        - containerPort: 8444
+          name: admin-ssl
+          protocol: TCP
+        - containerPort: 8000
+          name: proxy
+          protocol: TCP
+        - containerPort: 8443
+          name: proxy-ssl
+          protocol: TCP
+        - containerPort: 9542
+          name: metrics
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kong-service
+spec:
+  type: NodePort
+  ports:
+  - name: admin
+    port: 8001
+    protocol: TCP
+    nodePort: 30500
+  - name: proxy
+    port: 8000
+    protocol: TCP
+    nodePort: 30501
+  selector:
+    app: kong
